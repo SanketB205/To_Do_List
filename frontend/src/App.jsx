@@ -1,4 +1,4 @@
-import { useState, useEffect, useRef } from 'react';
+import { useState, useEffect, useRef, useCallback } from 'react';
 import './App.css';
 import TodoInput from './components/TodoInput';
 import TodoList from './components/TodoList';
@@ -24,7 +24,7 @@ function App() {
   const pendingTaskRef = useRef(null);
 
   // Authenticated fetch helper
-  const authFetch = (url, options = {}) =>
+  const authFetch = useCallback((url, options = {}) =>
     fetch(url, {
       ...options,
       headers: {
@@ -32,14 +32,14 @@ function App() {
         Authorization: `Bearer ${token}`,
         ...(options.headers || {}),
       },
-    });
+    }), [token]);
 
   useEffect(() => {
     if (token) {
       setIsLoading(true);
       fetchTodos();
     }
-  }, [token]);
+  }, [token, authFetch]);
 
   const handleAuth = (newToken, newUser) => {
     setToken(newToken);
