@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { X, LogIn, UserPlus, Eye, EyeOff, Mail, Lock, User } from 'lucide-react';
 
-const API_BASE = 'http://localhost:5000/api/auth';
+const API_BASE = 'https://to-do-list-pehn.onrender.com/api/auth';
 
 export default function AuthModal({ onAuth, onClose }) {
   const [mode, setMode] = useState('login'); // 'login' | 'register'
