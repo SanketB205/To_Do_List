@@ -1,7 +1,10 @@
 const mongoose = require('mongoose');
+require('dotenv').config();
 
-// Connect to local MongoDB instance
-mongoose.connect('mongodb://127.0.0.1:27017/todolist')
+const MONGODB_URI = process.env.MONGODB_URI || 'mongodb://127.0.0.1:27017/todolist';
+
+// Connect to MongoDB (Atlas or local fallback)
+mongoose.connect(MONGODB_URI)
   .then(() => console.log('Connected to MongoDB database'))
   .catch((err) => console.error('Error connecting to MongoDB:', err));
 

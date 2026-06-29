@@ -140,14 +140,21 @@ Both return:
 
 ## Environment Variables
 
-The backend reads the following optional environment variable:
+Create a `backend/.env` file before starting the server:
+
+```env
+MONGODB_URI=mongodb+srv://<user>:<password>@cluster0.xxxxx.mongodb.net/todolist?retryWrites=true&w=majority
+JWT_SECRET=your_strong_secret_here
+PORT=5000
+```
 
 | Variable | Default | Description |
 |---|---|---|
-| `PORT` | `5000` | Port the Express server listens on |
+| `MONGODB_URI` | local MongoDB fallback | MongoDB Atlas (or local) connection string |
 | `JWT_SECRET` | `todo_jwt_secret_key_change_in_production` | Secret used to sign JWTs |
+| `PORT` | `5000` | Port the Express server listens on |
 
-> **Important:** Set a strong `JWT_SECRET` before deploying to production.
+> **Important:** Never commit `.env` to version control. The root `.gitignore` already excludes it.
 
 ---
 
