@@ -6,7 +6,7 @@ import FilterBar from './components/FilterBar';
 import AuthModal from './components/AuthModal';
 import { LogOut } from 'lucide-react';
 
-const API_URL = 'https://to-do-list-pehn.onrender.com/api/todos';
+const API_URL = `${import.meta.env.VITE_API_URL}/api/todos`;
 
 function App() {
   const [todos, setTodos] = useState([]);

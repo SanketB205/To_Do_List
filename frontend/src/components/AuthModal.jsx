@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { X, LogIn, UserPlus, Eye, EyeOff, Mail, Lock, User } from 'lucide-react';
 
-const API_BASE = 'https://to-do-list-pehn.onrender.com/api/auth';
+const API_BASE = `${import.meta.env.VITE_API_URL}/api/auth`;
 
 export default function AuthModal({ onAuth, onClose }) {
   const [mode, setMode] = useState('login'); // 'login' | 'register'
